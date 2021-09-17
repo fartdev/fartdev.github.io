@@ -1,22 +1,19 @@
 body {
     background-image: url("dog_gold_grillz.png");
-    font-family     : Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family     : Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     font            : 20px;
     font-weight     : 5px;
     filter          : blur(100%);
 }
 
 h2 {
-    color: white;
-    text-shadow:
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
+    color      : white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .maincontainer {
     width           : 70%;
+    height          : 100%;
     margin-left     : 15%;
     margin-right    : 15%;
     margin-top      : 0%;
@@ -25,7 +22,6 @@ h2 {
     top             : 0;
     position        : absolute;
     background-color: rgb(133, 118, 98);
-
 }
 
 .consolecontainer {
@@ -47,7 +43,7 @@ h2 {
     background-color: rgb(54, 54, 54);
     color           : green;
     border          : 3px solid rgb(0, 0, 0);
-    font-family     : 'Courier New', Courier, monospace
+    font-family     : "Courier New", Courier, monospace;
 }
 
 .mainframe {
