@@ -1,9 +1,12 @@
 body {
-    background-image: url("dog_gold_grillz.png");
-    font-family     : Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    font            : 20px;
-    font-weight     : 5px;
-    filter          : blur(100%);
+    background-image   : url("dog_gold_grillz.jpg");
+    background-position: center;
+    background-repeat  : repeat;
+    background-size    : 20%;
+    font-family        : Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font               : 20px;
+    font-weight        : 5px;
+    filter             : blur(100%);
 }
 
 h2 {
