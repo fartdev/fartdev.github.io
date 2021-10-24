@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>dog</title>
+    <link rel="icon" type="image/ico" href="dog_gold_grillz_heart.ico">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body style="background-size: cover;">
+    <div class="navbar">
+        <a href="index.html">home</a>
+        <a href="dog.html">dog</a>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center; min-height: 94vh; min-width: 99vw">
+        <div class="dogcontainer" id="dogcontainer">
+            <h2 class="vineboomsoundeffect" style="display: table-row">WHAT THE DOG</h2>
+            <img src="dog_gold_grillz.jpg" style="display: table-row; text-align: -webkit-center;" width="300"
+                height="300">
+            <h2 class="vineboomsoundeffect" style="display: table-row">DOG DOING?</h2>
+        </div>
+        <script>
+            window.onload = e => {
+                document.getElementById("dogcontainer").classList.add(Math.random() < .5 ? "blinker" : "spinner");
+            }
+        </script>
+    </div>
+</body>
+
+</html>
