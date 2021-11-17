@@ -1,5 +1,5 @@
 body {
-    background-image   : url("dog_gold_grillz.jpg");
+    background-image   : url("img/dog_gold_grillz.jpg");
     background-position: center;
     background-repeat  : repeat;
     background-size    : 20%;
@@ -11,9 +11,36 @@ body {
     filter             : blur(100%);
 }
 
+button {
+    background-color: rgb(192, 168, 136);
+    border          : 1px solid #333;
+    border-radius   : 2px;
+    padding         : 11px 20px;
+    text-align      : center;
+}
+
 .vineboomsoundeffect {
-    color      : white;
+    color: white;
+    font-family: Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.spoiler {
+    color           : black;
+    background-color: black;
+}
+
+.vineboomsoundeffect .spoiler:hover {
+    color           : white;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.console .spoiler:hover {
+    color           : green;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .maincontainer {
