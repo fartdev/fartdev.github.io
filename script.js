@@ -38,3 +38,24 @@ window.consoleInterval = setInterval(() => {
         document.getElementById(c.id).innerText = final;
     }
 }, 100);
+
+const elem = document.getElementById("githubelem");
+let on = false;
+elem.onmouseover = () => {
+    on = true;
+}
+
+elem.onmouseleave = () => {
+    on = false;
+}
+
+window.moverInterval = setInterval(() => {
+    if (!on) return;
+    elem.style.left = (Math.random() < .5 ? -1 : 1) * Math.floor(Math.random() * 120) + "px";
+    elem.style.top = (Math.random() < .5 ? -1 : 1) * Math.floor(Math.random() * 40) + "px";
+    clearTimeout(window.returnInterval);
+    window.returnInterval = setTimeout(() => {
+        elem.style.left = 0;
+        elem.style.top = 0;
+    }, 1000);
+}, 50);
