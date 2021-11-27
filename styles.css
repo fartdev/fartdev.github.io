@@ -1,5 +1,5 @@
 body {
-    background-image   : url("img/dog_gold_grillz.jpg");
+    background-image   : url("img/festive_dog_gold_grillz.png");
     background-position: center;
     background-repeat  : repeat;
     background-size    : 20%;
@@ -17,6 +17,16 @@ button {
     border-radius   : 2px;
     padding         : 11px 20px;
     text-align      : center;
+}
+
+
+
+details::selection, details *::selection {
+    background-color: Transparent;
+  }
+
+details {
+    cursor: pointer;
 }
 
 .vineboomsoundeffect {
