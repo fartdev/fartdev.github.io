@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>tic tac toe (scuff dont look at code)</title>
+        <link rel="icon" type="image/ico" href="img/dog_gold_grillz_heart.ico">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <style>
+            body {
+                align-items: center;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 24px;
+                user-select: none;
+            }
+
+            .grid {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: stretch;
+                justify-content: space-evenly;
+                width: 40vw;
+                height: 40vw;
+                margin: auto;
+                background-color: beige;
+            }
+
+            .cell {
+                flex: 0 0 32%;
+                width: 100px;
+                margin-bottom: 3px;
+                background-color: rgb(172, 172, 172);
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .ronaldo {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 500px;
+                height: 300px;
+                margin-top: -150px;
+                margin-left: -250px;
+                border:5px solid black;
+            }
+        </style>
+        <script>
+            const gridSize = 3;
+            const players = ["X", "O"];
+            let player = 0;
+            let hasWon = false;
+
+            const checkWin = () => {
+                const grid = document.getElementsByClassName("grid")[0];
+                // Vertical wins 
+                let win = { win: false, col: null, row: null, diag: null, winer: null };
+                for (let col = 1; col <= gridSize; col++) {
+                    let the = grid.childNodes[col].innerText;
+                    if (!the) continue;
+                    let thisWin = true;
+                    for (let i = col; i < grid.childNodes.length; i += gridSize) {
+                        if (the !== grid.childNodes[i].innerText) thisWin = false;
+                    }
+                    if (thisWin) {
+                        win.win = true;
+                        win.col = col;
+                        win.winer = the;
+                        break;
+                    }
+                }
+                // Horizontal check
+                for (let row = 1; row <= gridSize; row++) {
+                    let the = grid.childNodes[row * gridSize].innerText;
+                    if (!the) continue;
+                    let thisWin = true;
+                    for (let i = gridSize * row - (gridSize - 1); i <= gridSize * row; i++) {
+                        if (the !== grid.childNodes[i].innerText) thisWin = false;
+                    }
+                    if (thisWin) {
+                        win.win = true;
+                        win.row = row;
+                        win.winer = the;
+                        break;
+                    }
+                }
+                // Diag check
+                let the = grid.childNodes[1].innerText;
+                if (the) {
+                    let thisWin = true;
+                    for (let i = 1; i <= Math.pow(gridSize, 2); i += gridSize + 1) if (the !== grid.childNodes[i].innerText) thisWin = false;
+                    if (thisWin) {
+                        win.win = true;
+                        win.diag = 1;
+                        win.winer = the;
+                    }
+                }
+                the = grid.childNodes[gridSize].innerText;
+                if (the) {
+                    let thisWin = true;
+                    for (let i = gridSize; i <= Math.pow(gridSize, 2) - (gridSize - 1); i += gridSize - 1) if (the !== grid.childNodes[i].innerText) thisWin = false;
+                    if (thisWin) {
+                        win.win = true;
+                        if (win.diag === 1) win.diag = 3;
+                        else win.diag = 2;
+                        win.winer = the;
+                    }
+                }
+                return win;
+            }
+
+            const clickHandler = elem => {
+                if (hasWon) return;
+                if (elem.innerText) return;
+                elem.innerText = players[player];
+                player++;
+                if (player >= players.length) player = 0;
+                let win = checkWin();
+                if (!win.win) return;
+                hasWon = true;
+                const grid = document.getElementsByClassName("grid")[0];
+                if (win.col) {
+                    for (let i = win.col; i < grid.childNodes.length; i += gridSize) {
+                        grid.childNodes[i].setAttribute("style", grid.childNodes[i].getAttribute("style") + `background-color: #AAFFAA;`);
+                    }
+                }
+                if (win.row) {
+                    for (let i = gridSize * win.row - (gridSize - 1); i <= gridSize * win.row; i++) {
+                        grid.childNodes[i].setAttribute("style", grid.childNodes[i].getAttribute("style") + `background-color: #AAFFAA;`);
+                    }
+                }
+                if (win.diag) {
+                    if (win.diag === 1 || win.diag === 3) {
+                        for (let i = 1; i <= Math.pow(gridSize, 2); i += gridSize + 1) grid.childNodes[i].setAttribute("style", grid.childNodes[i].getAttribute("style") + `background-color: #AAFFAA;`);
+                    }
+                    if (win.diag === 2 || win.diag === 3) {
+                        for (let i = gridSize; i <= Math.pow(gridSize, 2) - (gridSize - 1); i += gridSize - 1) grid.childNodes[i].setAttribute("style", grid.childNodes[i].getAttribute("style") + `background-color: #AAFFAA;`);
+                    }
+                }
+                setTimeout(() => {
+                    if (win.winer) win.winer = win.winer.toLowerCase();
+                    if (!["x", "o"].includes(win.winer)) return;
+                    const ronaldo = document.createElement("img");
+                    ronaldo.className = "ronaldo";
+                    ronaldo.src = `img/${win.winer}win.gif`;
+                    document.body.appendChild(ronaldo);
+                }, 1000);
+            }
+
+            window.onload = (e) => {
+                for (let i = 0; i < Math.pow(gridSize, 2); i++) {
+                    const cell = document.createElement("div");
+                    cell.className = "cell";
+                    cell.style.flexBasis = `${100 / gridSize - 1}%`;
+                    cell.setAttribute("onClick", "clickHandler(this)");
+                    document.getElementsByClassName("grid")[0].appendChild(cell);
+                    cell.style.height = `${cell.clientWidth}px`
+                }
+            }
+        </script>
+    </head>
+
+<body>
+    <div class="navbar">
+        <a href="/">home</a>
+        <a href="dog.html">dog</a>
+        <a href="clients.html">minecraft clients</a>
+        <a href="tictactoe.html">bad tictactoe</a>
+    </div>
+    <div class="grid">
+    </div>
+</body>
+
+</html>
