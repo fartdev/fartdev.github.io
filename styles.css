@@ -101,15 +101,6 @@ details {
     color           : white;
 }
 
-.dogcontainer {
-    background-color: whitesmoke;
-    text-align      : center;
-    display         : flex;
-    flex-direction  : column;
-    display         : table;
-    padding         : 10px;
-}
-
 .marquee {
     width      : 100%;
     line-height: 50px;
@@ -139,78 +130,5 @@ details {
 
     100% {
         transform: translate(-100%, 0);
-    }
-}
-
-.blinker {
-    animation        : 1s blinker linear infinite;
-    -webkit-animation: 1s blinker linear infinite;
-    -moz-animation   : 1s blinker linear infinite;
-}
-
-@-moz-keyframes blinker {
-    0% {
-        opacity: 1.0;
-    }
-
-    50% {
-        opacity: 0.0;
-    }
-
-    100% {
-        opacity: 1.0;
-    }
-}
-
-@-webkit-keyframes blinker {
-    0% {
-        opacity: 1.0;
-    }
-
-    50% {
-        opacity: 0.0;
-    }
-
-    100% {
-        opacity: 1.0;
-    }
-}
-
-@keyframes blinker {
-    0% {
-        opacity: 1.0;
-    }
-
-    50% {
-        opacity: 0.0;
-    }
-
-    100% {
-        opacity: 1.0;
-    }
-}
-
-.spinner {
-    -webkit-animation: spin 5s linear infinite;
-    -moz-animation   : spin 5s linear infinite;
-    animation        : spin 5s linear infinite;
-}
-
-@-moz-keyframes spin {
-    100% {
-        -moz-transform: rotate(360deg);
-    }
-}
-
-@-webkit-keyframes spin {
-    100% {
-        -webkit-transform: rotate(360deg);
-    }
-}
-
-@keyframes spin {
-    100% {
-        -webkit-transform: rotate(360deg);
-        transform        : rotate(360deg);
     }
 }
